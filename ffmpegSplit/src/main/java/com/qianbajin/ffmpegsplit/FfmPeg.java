@@ -8,12 +8,16 @@ import java.io.File;
 public class FfmPeg {
 
     public static void main(String[] arg) {
-        split();
+//        split();
+        Util.getWeChatTools();
     }
 
+    /**
+     * 调用ffmpeg将视频切割成多段
+     */
     private static void split() {
         try {
-            // 每段视频时长 秒
+            // 每段视频时长
             long perDur = 270L, from = 0, index = 0;
             File dir = new File("J:/publicagent/1cat");
             boolean exists = dir.exists();
@@ -53,6 +57,8 @@ public class FfmPeg {
                 long l = System.currentTimeMillis();
 //                Util.execCommand(command);
                 System.out.println((System.currentTimeMillis() - l) + "  " + command);
+                // -ss 开始时间  -t 时长
+                // ffmpeg -ss 00:00:00 -t 00:00:13 -i I:\手机文件\pipixia\741d6f85e0bb4cbe9f21da4cad3a4268.mp4 -vcodec copy -acodec copy abc.mp4
             }
             if (from < time) {
                 System.out.println(index + " from:" + from + " to:" + Util.secTime2String(time));

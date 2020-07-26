@@ -2,16 +2,17 @@ package com.qianbajin.ffmpegsplit;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Locale;
 /**
  * ----------------------
- * 代码千万行
- * 注释第一行
- * 代码不注释
- * 改bug两行泪
+ *
+ *
+ *
+ *
  * -----------------------
  *
  * @author qianbajin
@@ -114,5 +115,33 @@ public class Util {
             e.printStackTrace();
         }
         return "";
+    }
+
+    public static void getWeChatTools() {
+//        File file = new File("H:/nixiang/wechat/com.tencent.mm-7.0.10-1580-3454/res/layout");
+        File file = new File("H:/nixiang/aliPay/com.eg.android.AlipayGphone-10.1.92.7000-260-1165/res/layout");
+        if (file.exists()) {
+            File[] files = file.listFiles();
+            if (files != null) {
+                for (File file1 : files) {
+                    try {
+                        BufferedReader reader = new BufferedReader(new FileReader(file1));
+                        String line;
+                        while ((line = reader.readLine()) != null) {
+                            if (!line.isEmpty()) {
+                                if (line.contains("tools")) {
+                                    System.out.println("----------------------" + file1.getName() + " " + line);
+                                }
+                            }
+                        }
+//                        System.out.println(line);
+                        reader.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
     }
 }
