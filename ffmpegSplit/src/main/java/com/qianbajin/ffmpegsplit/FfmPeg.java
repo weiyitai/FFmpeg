@@ -30,6 +30,8 @@ public class FfmPeg {
             String duration = Util.getDuration(mp4);
 //            String duration = "00:40:27";
             // ffmpeg -ss 00:06:00 -i test.mp4 -vcodec copy -acodec copy abc.mp4
+            // 将-ss， -t 参数放在-i参数之前 对输入文件执行seek操作，会seek到-ss设置的时间点前面的关键帧上。
+            // 时间不精确，但是不会出现黑屏 https://blog.csdn.net/matrix_laboratory/article/details/53157383
             long time = Util.time2Long(duration);
             String durLong = Util.secTime2String(perDur);
             System.out.println("duration:" + duration + " time:" + time);
