@@ -12,5 +12,15 @@
 
 * -ss 开始时间  -t 时长,如果不指定时长则默认到视频结尾
 *  将-ss， -t 参数放在-i参数之前 对输入文件执行seek操作，会seek到-ss设置的时间点前面的关键帧上,时间不精确，但是不会出现黑屏
-`ffmpeg -ss 00:00:00 -t 00:00:13 -i I:\手机文件\pipixia\741d6f85e0bb4cbe9f21da4cad3a4268.mp4 -vcodec copy -acodec copy abc.mp4`
+`ffmpeg -ss 00:00:00 -t 00:00:13 -i I:\手机文件\pipixia\741d6f85e0bb4cbe9f21da4cad3a4268.mp4 -vcodec copy -acodec copy abc.mp4`  
+
+## 将视频转gif  
+`ffmpeg -i in.mp4 out.gif`  
+
+* 从视频中第二秒开始，截取时长为3秒的片段转化为 gif    
+`ffmpeg -t 3 -ss 00:00:02 -i small.webm small-clip.gif`  
+
+## 视频切片  
+* 将一个视频进行切片,每个视频片段时长8秒  
+`ffmpeg -re -i jiedong_remove.mp4 -c copy -f segment -segment_format mp4 -segment_time 8 out_%03d.mp4`
 

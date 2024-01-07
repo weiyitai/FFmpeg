@@ -76,6 +76,4 @@ public class FfmPeg {
             e.printStackTrace();
         }
     }
-
-
 }
