@@ -22,5 +22,17 @@
 
 ## 视频切片  
 * 将一个视频进行切片,每个视频片段时长8秒  
-`ffmpeg -re -i jiedong_remove.mp4 -c copy -f segment -segment_format mp4 -segment_time 8 out_%03d.mp4`
+`ffmpeg -re -i jiedong_remove.mp4 -c copy -f segment -segment_format mp4 -segment_time 8 out_%03d.mp4`  
+
+## 视频合并  
+* 将视频文件添加到 list.txt文件中  
+`(for %i in (out_*.mp4) do @echo file '%i') > list.txt`  
+结果如下  
+
+		file 'out_0.mp4'
+		file 'out_1.mp4'
+		file 'out_2.mp4'  
+
+  
+
 
